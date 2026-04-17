@@ -1,2 +1,1 @@
 # oshalets-application
-# oshalets-application
