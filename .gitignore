@@ -1,0 +1,18 @@
+doc/*
+
+# macOS
+.DS_Store
+
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Backend (Go)
+# もしGoでビルドした実行ファイル（main）があれば無視する
+backend/main
+backend/__debug_bin
+
+# Env files (もし将来パスワードなどを書くファイルを作ったら無視する)
+.env
+.env.local

@@ -1,0 +1,10 @@
+version: v1
+plugins:
+  # Goの基本的な構造体（Request/Responseなど）を生成するプラグイン
+  - plugin: buf.build/protocolbuffers/go:v1.33.0
+    out: backend/gen
+    opt: paths=source_relative
+  # Connect-RPC（APIの通信部分）を生成するプラグイン
+  - plugin: buf.build/connectrpc/go:v1.16.1
+    out: backend/gen
+    opt: paths=source_relative

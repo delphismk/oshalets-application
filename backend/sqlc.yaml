@@ -1,0 +1,9 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "db/queries/query.sql"   # さっき作ったファイルの場所
+    schema: "db/seeds/001_schema.up.sql"   # さっき作ったファイルの場所
+    gen:
+      go:
+        package: "db"         # 生成されるGoのパッケージ名
+        out: "infrastructure/db" # 生成されたコードの保存先

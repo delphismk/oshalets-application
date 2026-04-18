@@ -4,7 +4,7 @@ package entity
 type ItemCategory int
 
 const (
-	CategoryHAT ItemCategory = iota
+	CategoryHAT ItemCategory = iota + 1
 	CategorySHIRT
 	CategoryJACKET
 	CategoryBOTTOMS

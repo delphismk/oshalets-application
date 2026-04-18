@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+// パッケージ名（バージョンを含めるのが一般的）
+package oshalets.v1;
+
+// Goのコードを生成する際のパッケージの配置先を指定します
+option go_package = "backend/gen/oshalets/v1;oshaletsv1";
+
+// ==========================================
+// Service (APIのエンドポイント群)
+// ==========================================
+service OshaletsService {
+  // アバター状態の取得
+  rpc GetAvatar(GetAvatarRequest) returns (GetAvatarResponse) {}
+  
+  // 持ち物一覧の取得
+  rpc GetInventory(GetInventoryRequest) returns (GetInventoryResponse) {}
+  
+  // アイテムを着る
+  rpc EquipItem(EquipItemRequest) returns (EquipItemResponse) {}
+}
+
+// ==========================================
+// Messages (リクエストとレスポンスのデータ型)
+// ==========================================
+
+// --- GetAvatar ---
+message GetAvatarRequest {
+  int32 user_id = 1;
+}
+
+message GetAvatarResponse {
+  int32 user_id = 1;
+  int32 hat_id = 2;
+  int32 shirt_id = 3;
+  int32 jacket_id = 4;
+  int32 bottoms_id = 5;
+  int32 shoes_id = 6;
+}
+
+// --- GetInventory ---
+message GetInventoryRequest {
+  int32 user_id = 1;
+}
+
+message GetInventoryResponse {
+  int32 user_id = 1;
+  repeated int32 owned_item_ids = 2; // repeated は配列（スライス）を意味します
+}
+
+// --- EquipItem ---
+message EquipItemRequest {
+  int32 user_id = 1;
+  int32 item_id = 2;
+}
+
+message EquipItemResponse {
+  // 着せ替え後の最新のアバター状態を返すようにすると、フロントが画面を更新しやすくなります
+  int32 user_id = 1;
+  int32 hat_id = 2;
+  int32 shirt_id = 3;
+  int32 jacket_id = 4;
+  int32 bottoms_id = 5;
+  int32 shoes_id = 6;
+}

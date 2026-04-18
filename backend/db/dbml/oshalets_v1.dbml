@@ -1,0 +1,42 @@
+// ==========================================
+// User集約
+// ==========================================
+Table users {
+  id int [primary key]
+  name varchar(255)
+}
+
+// ==========================================
+// Item集約 (マスタデータ)
+// ==========================================
+Table items {
+  id int [primary key]
+  name varchar(255)
+  category int // 0:HAT, 1:SHIRT...
+  image_url varchar(255)
+}
+
+// ==========================================
+// Inventory集約
+// RDBでは配列([]int)を持てないので、中間テーブルになる
+// ==========================================
+Table user_items {
+  user_id int [ref: > users.id]
+  item_id int [ref: > items.id]
+  
+  indexes {
+    (user_id, item_id) [pk] // 複合主キー
+  }
+}
+
+// ==========================================
+// Avatar集約
+// ==========================================
+Table avatar_equipments {
+  user_id int [primary key, ref: - users.id] // Userと1対1
+  hat_id int [ref: > items.id, null]
+  shirt_id int [ref: > items.id, null]
+  jacket_id int [ref: > items.id, null]
+  bottoms_id int [ref: > items.id, null]
+  shoes_id int [ref: > items.id, null]
+}
