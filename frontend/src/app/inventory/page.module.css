@@ -1,0 +1,21 @@
+/* page.module.cssのスタイルを使い回すか、新しく定義します */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+.listItem {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.itemImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
